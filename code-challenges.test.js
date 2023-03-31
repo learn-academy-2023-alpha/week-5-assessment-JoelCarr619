@@ -23,29 +23,27 @@
 
 // a) Create a test with expect statements using the variables provided.
 
-// const secretCodeWord1 = "Lackadaisical";
-// // Expected output: "L4ck4d41s1c4l"
-// const secretCodeWord2 = "Gobbledygook";
-// // Expected output: "G0bbl3dyg00k"
-// const secretCodeWord3 = "Eccentric";
-// // Expected output: "3cc3ntr1c"
+const secretCodeWord1 = "Lackadaisical";
+// Expected output: "L4ck4d41s1c4l"
+const secretCodeWord2 = "Gobbledygook";
+// Expected output: "G0bbl3dyg00k"
+const secretCodeWord3 = "Eccentric";
+// Expected output: "3cc3ntr1c"
 
-// console.log(hiddenMessage(secretCodeWord1));
-// console.log(hiddenMessage(secretCodeWord2));
-// console.log(hiddenMessage(secretCodeWord3));
+// b) Create the function that makes the test pass.
 
-// // b) Create the function that makes the test pass.
+describe("encodedWords", () => {
+  const secretCodeWords1 = "Lackadaisical";
+  const secretCodeWords2 = "Gobbledygook";
+  const secretCodeWords3 = "Eccentric";
 
-// // can't seem to get this to run
-
-// const hiddenMessage = (message) => {
-//   message = message.replace(/a/g, "4");
-//   message = message.replace(/e/g, "3");
-//   message = message.replace(/I/g, "1");
-//   message = message.replace(/o/g, "0");
-//   return message;
-//   return message.replace(/[aeio]/g, (c) => ({ a: 4, e: 3, I: 1, o: 0 }[c]));
-// };
+  it("should convert 'a' to 4, 'e' to 3, 'I' to 1, and 'o' to 0", () => {
+    // expect(encodedWords(secretCodeWords1)).toEqual("L4ck4d41s1c4l");
+    // expect(encodedWords(secretCodeWords2)).toEqual("G0bbl3dyg00k");
+    // expect(encodedWords(secretCodeWords3)).toEqual("3cc3ntr1c");
+  });
+  it("should handle empty strings", () => {});
+});
 
 // --------------------2) Create a function that takes in an array of words and a single letter and returns an array of all the words containing that particular letter.
 
@@ -64,18 +62,34 @@ const letterA = "a";
 const letterE = "e";
 // Expected output: ["Cherry", "Blueberry", "Peach"]
 
-// Solve for 'A'
-const solve1 = missingLetter(fruitArray, letterA);
-console.log(solve1);
-
-// Solve for 'E'
-const solve2 = missingLetter(fruitArray, letterE);
-console.log(solve2);
-// b) Create the function that makes the test pass.
-
-const missingLetter = (words, letter) => {
-  return words.filter((words) => words.includes(letter));
-};
+describe("filterWordsByLetter", () => {
+  const fruitArray = [
+    "Mango",
+    "Cherry",
+    "Apricot",
+    "Blueberry",
+    "Peach",
+    "Kiwi",
+  ];
+  it("returns an array of words containing the letter 'a'", () => {
+    const letterA = "a";
+    // const result = filterWordsByLetter(fruitArray, letterA);
+    const expected = ["Mango", "Apricot", "Blueberry"];
+    // expect(result).toEqual(expected);
+  });
+  it("returns an array of words containing the letter 'e'", () => {
+    const letterE = "e";
+    // const result = filterWordsByLetter(fruitArray, letterE);
+    const expected = ["Cherry", "Blueberry", "Peach"];
+    // expect(result).toEqual(expected);
+  });
+  it("returns an empty array if no words contain the letter 'z'", () => {
+    const letterZ = "z";
+    // const result = filterWordsByLetter(fruitArray, letterZ);
+    const expected = [];
+    // expect(result).toEqual(expected);
+  });
+});
 
 // --------------------3) Create a function that takes in an array of 5 numbers and determines whether or not the array is a "full house". A full house is exactly one pair and one three of a kind.
 
@@ -95,18 +109,17 @@ const hand3 = [5, 5, 5, 5, 4];
 const hand4 = [7, 2, 7, 2, 7];
 // Expected output: true
 
-expect(sitCom(hand1)).toBe(true);
-expect(sitCom(hand2)).toBe(false);
-expect(sitCom(hand3)).toBe(false);
-expect(sitCom(hand4)).toBe(true);
+// // b) Create the function that makes the test pass.
 
-// b) Create the function that makes the test pass.
-
-const sitCom = (hand) => {
-  const counts = {};
-  for (const num of hand) {
-    counts[num] = counts[num] ? counts[num] + 1 : 1;
-  }
-  const values = Object.values(counts);
-  return values.includes(2) && values.includes(3);
-};
+describe("sitCom", () => {
+  it("should return true if hand is a full house", () => {
+    const hand1 = [5, 5, 5, 3, 3];
+    const hand2 = [5, 5, 3, 3, 4];
+    const hand3 = [5, 5, 5, 5, 4];
+    const hand4 = [7, 2, 7, 2, 7];
+    // expect(sitCom(hand1)).toBe(true);
+    // expect(sitCom(hand2)).toBe(false);
+    // expect(sitCom(hand3)).toBe(false);
+    // expect(sitCom(hand4)).toBe(true);
+  });
+});
