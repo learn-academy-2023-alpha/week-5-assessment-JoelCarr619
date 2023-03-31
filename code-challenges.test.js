@@ -45,6 +45,15 @@ describe("encodedWords", () => {
   it("should handle empty strings", () => {});
 });
 
+const hiddenMessage = (message) => {
+  message = message.replace(/a/g, "4");
+  message = message.replace(/e/g, "3");
+  message = message.replace(/I/g, "1");
+  message = message.replace(/o/g, "0");
+  return message;
+  return message.replace(/[aeio]/g, (c) => ({ a: 4, e: 3, I: 1, o: 0 }[c]));
+};
+
 // --------------------2) Create a function that takes in an array of words and a single letter and returns an array of all the words containing that particular letter.
 
 // Pseudo Code
@@ -91,6 +100,10 @@ describe("filterWordsByLetter", () => {
   });
 });
 
+const missingLetter = (words, letter) => {
+  return words.filter((words) => words.includes(letter));
+};
+
 // --------------------3) Create a function that takes in an array of 5 numbers and determines whether or not the array is a "full house". A full house is exactly one pair and one three of a kind.
 
 // Pseudo Code
@@ -123,3 +136,12 @@ describe("sitCom", () => {
     // expect(sitCom(hand4)).toBe(true);
   });
 });
+
+const sitCom = (hand) => {
+  const counts = {};
+  for (const num of hand) {
+    counts[num] = counts[num] ? counts[num] + 1 : 1;
+  }
+  const values = Object.values(counts);
+  return values.includes(2) && values.includes(3);
+};
